@@ -1,28 +1,25 @@
-// Immediately apply saved mode on load
-window.addEventListener('DOMContentLoaded', () => {
-    const darkMode = localStorage.getItem('darkMode');
-    if (darkMode === 'true') {
-      document.body.classList.add('dark');
-    }
-  });
-  
-  // Toggle dark mode and persist
-  const toggleBtn = document.getElementById('toggleModeBtn');
-  toggleBtn.addEventListener('click', () => {
-    document.body.classList.toggle('dark');
-    const isDark = document.body.classList.contains('dark');
-    localStorage.setItem('darkMode', isDark);
-  });
-  
-  // Animate the box element when button clicked
-  const animateBtn = document.getElementById('animateBtn');
-  animateBtn.addEventListener('click', () => {
-    const box = document.getElementById('box');
-    // add animation class
-    box.classList.add('animate');
-    // remove after transition ends to allow replay
-    box.addEventListener('transitionend', function handler() {
-      box.classList.remove('animate');
-      box.removeEventListener('transitionend', handler);
-    });
-  });s
+// Theme Management
+        function initializeTheme() {
+            const savedTheme = localStorage.getItem('theme') || 'light';
+            document.body.classList.toggle('dark-theme', savedTheme === 'dark');
+            document.getElementById('themeToggle').checked = savedTheme === 'dark';
+        }
+
+        function toggleTheme() {
+            const isDark = document.body.classList.toggle('dark-theme');
+            localStorage.setItem('theme', isDark ? 'dark' : 'light');
+        }
+
+        // Like System
+        function handleLike() {
+            const likeCount = parseInt(localStorage.getItem('likeCount') || 0) + 1;
+            localStorage.setItem('likeCount', likeCount);
+            document.getElementById('likeCount').textContent = likeCount;
+        }
+
+        // Initialize
+        window.onload = () => {
+            initializeTheme();
+            document.getElementById('likeCount').textContent = 
+                localStorage.getItem('likeCount') || 0;
+        };

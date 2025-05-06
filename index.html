@@ -1,22 +1,43 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Animated Page with localStorage</title>
-  <link rel="stylesheet" href="styles.css" />
-</head>
-<body>
-  <header>
-    <h1>Welcome!</h1>
-    <button id="toggleModeBtn">Dark Mode</button>
-  </header>
-
-  <main>
-    <button id="animateBtn" class="primary-btn">Animate Box</button>
-    <div id="box" class="box"></div>
-  </main>
-
-  <script src="script.js"></script>
-</body>
-</html>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Animations Demo</title>
+    <link rel="stylesheet" href="styles.css">
+  
+  </head>
+  <body>
+      <div class="animated-box" onclick="animateBox(this)"></div>
+      <button class="like-button" onclick="handleLike()">
+      </button>
+      <body>
+        <div class="container">
+            <div class="card">
+                <h1>User Preferences</h1>
+                
+                <div class="toggle-container">
+                    <span>Dark Mode</span>
+                    <label class="switch">
+                        <input type="checkbox" id="themeToggle" onclick="toggleTheme()">
+                        <span class="slider"></span>
+                    </label>
+                </div>
+    
+                <div class="stat-badge">
+                    <span>❤️ Likes:</span>
+                    <span id="likeCount">0</span>
+                </div>
+    
+                <button 
+                    class="btn ripple-effect" 
+                    onclick="handleLike()"
+                    style="margin-top: 1.5rem;"
+                >
+                    Add Like
+                </button>
+            </div>
+        </div>
+        <script src="script.js" defer></script>
+    </body>
+    </html>
